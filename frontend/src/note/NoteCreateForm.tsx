@@ -4,6 +4,7 @@ import {NoteState} from "./note";
 import {MuiPickersUtilsProvider, KeyboardDateTimePicker} from "@material-ui/pickers";
 import DateFnsUtils from "@date-io/date-fns";
 import {convertToRaw, EditorState} from "draft-js";
+import {useEffect} from "react";
 
 export interface NoteCreateFormProps {
     state: NoteState;
@@ -19,6 +20,12 @@ const useStyles = makeStyles({
 
 export function NoteCreateForm({state, onChange}: NoteCreateFormProps) {
     const classes = useStyles();
+
+    useEffect(() => {
+        if(!state.passwordProtected) {
+            handleChange('password', undefined);
+        }
+    }, [state.passwordProtected])
 
     const handleChange = (name: keyof NoteState, value: unknown) => {
         onChange({
