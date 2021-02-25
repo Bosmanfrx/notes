@@ -1,4 +1,4 @@
-import {Button, Card, CardActions, CardContent, CardHeader, TextField, Typography} from "@material-ui/core";
+import {Button, Card, CardActions, CardContent, CardHeader, TextField} from "@material-ui/core";
 import * as React from "react";
 import {useEffect, useState} from "react";
 import {NoteService} from "./services/note.service";
@@ -17,6 +17,7 @@ export function NoteViewCard() {
     const [password, setPassword] = useState<string>('');
     const [html, setHtml] = useState<string>('');
     const {id} = useParams<NoteViewParams>();
+
     useEffect(() => {
         fetchCardContent()
     }, [id]);
@@ -31,8 +32,8 @@ export function NoteViewCard() {
         }
     }
 
-    const isForbidden = () => cardResponse?.status == 403;
-    const notFound = () => cardResponse?.status == 404;
+    const isForbidden = () => cardResponse?.status === 403;
+    const notFound = () => cardResponse?.status === 404;
     const isOk = () => cardResponse?.ok;
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => setPassword(e.target.value);

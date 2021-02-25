@@ -5,7 +5,7 @@ import {NoteCreateForm} from "./NoteCreateForm";
 import {HandWritingCanvas} from "../handwriting/HandWritingCanvas";
 import {ConvertToText} from "../handwriting/services/ConvertToText";
 import {HandwritingState} from "../handwriting/handwriting";
-import {Note, NoteResponse, NoteState} from "./note";
+import {NoteResponse, NoteState} from "./note";
 import {NoteService} from "./services/note.service";
 import {RawDraftContentState} from "draft-js";
 import { useHistory } from "react-router-dom";
