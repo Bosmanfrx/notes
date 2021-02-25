@@ -1,0 +1,34 @@
+version: '3.9'
+services:
+  postgres:
+    image: postgres:13.2
+    ports:
+    - 5432:5432
+    environment:
+      - POSTGRES_PASSWORD=postgres
+  backend:
+    build: backend/
+    volumes:
+      - './backend/:/app'
+    entrypoint: python manage.py runserver 0.0.0.0:8000
+    ports:
+    - 8000:8000
+    environment:
+      - SECRET=a_(x&084bymibi0l^qp94d)1btlglz#&+j!lp+2dos(chuej^
+      - DEBUG=1
+      - ALLOWED_HOSTS=localhost backend
+      - DB_NAME=postgres
+      - DB_PASSWORD=postgres
+      - DB_USER=postgres
+      - DB_HOST=postgres
+  frontend:
+    depends_on:
+      - backend
+    build: frontend/
+    volumes:
+        - './frontend/:/app'
+    ports:
+      - 3000:3000
+
+volumes:
+  backend:

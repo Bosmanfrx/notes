@@ -1,0 +1,24 @@
+main {
+    flex-basis: 100%;
+    display: grid;
+    grid-template-columns: 1fr 95% 1fr;
+    grid-template-rows: 1rem minmax(0, 1fr) 1rem;
+}
+
+.content {
+    grid-column: 2;
+    grid-row: 2;
+}
+
+.container {
+    height: 100%;
+    display: grid;
+    grid-template-rows: auto minmax(0, 1fr);
+}
+
+@media all and (min-width: 640px) {
+    main {
+        grid-template-columns: 1fr 600px 1fr;
+        grid-template-rows: 10% minmax(0, 1fr) 10%;
+    }
+}
